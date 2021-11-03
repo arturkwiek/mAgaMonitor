@@ -8,6 +8,65 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class mAgaMonitor; }
 QT_END_NAMESPACE
 
+typedef enum CLI_CMNDS
+{
+    START, //!< start smth
+    STOP, //!< stop smth
+    SET, //!< set smth
+    GET, //!< get smth
+    BLE, //!< Bluetooth Low Energy
+    BIST, //!< Built In Self Test
+    DUT, //!< Device Under Test
+    ADVERTISE, //!< Advertising
+    SCAN, //!< Scanning
+    CUSTOM, //!< Custom functionality
+    START_BLE, //!< start BLE
+    STOP_BLE, // not implemented
+    START_ADVERTISE, //!< start Advertising
+    STOP_ADVERTISE, //!< stop Advertising
+    START_SCAN, //!< start Scanning
+    STOP_SCAN, //!< stop Scanning
+    LIST_DEVICES, //!< list scanned devices
+    START_CUSTOM, //!< start Custom
+    STOP_CUSTOM, //!< stop Custom
+    GET_MAC, //!< get device Mac address
+    GET_DEVICE_NAME, //!< get bluetooth device name
+    SET_PARAMETER, //!< get parameter
+    GET_PARAMETER //!< set parameter
+}en_cli_cmd_t;
+
+
+
+static const char *CLI_BLE_STARTUP[] = {
+    "start",
+    "stop",
+    "set",
+    "get",
+    "ble",
+    "bist",
+    "dut",
+    "advertise",
+    "scan",
+    "custom",
+    "ble start",
+    "ble stop",
+    "advertise start",
+    "advertise stop",
+    "scan start",
+    "scan stop",
+    "scan list_devices",
+    "custom start",
+    "custom stop",
+    "get_mac",
+    "get_devname",
+    "parameter set",
+    "parameter get",
+
+};
+static const char *CLI_BLEINITTESTS[] = {
+    "apple", "orange", "grape", "banana",
+};
+
 class mAgaMonitor : public QDialog
 {
     Q_OBJECT
@@ -46,6 +105,12 @@ private slots:
     void on_btnGetMac_clicked();
 
     void on_btnListDevices_clicked();
+
+    void on_btnGetParam_clicked();
+
+    void on_btnSetParam_clicked();
+
+    void on_comboBox_currentIndexChanged(int index);
 
 private:
     Ui::mAgaMonitor *ui;
