@@ -57,7 +57,7 @@ void mAgaMonitor::on_btnOpen_clicked()
 
 void mAgaMonitor::on_btnSend_clicked()
 {
-    ui->textEdit->insertHtml(QString("<br><font color='blue'>Tx: %1 %2</font>\n").arg(ui->leFunc->text()).arg(ui->leArg->text()));
+    ui->textEdit->insertHtml(QString("<font color='blue'>%1 %2</font><br>").arg(ui->leFunc->text()).arg(ui->leArg->text()));
     if(!ui->leArg->text().isEmpty())
         serialPort.write(QString("<br>%1 %2\r").arg(ui->leFunc->text()).arg(ui->leArg->text()).toLatin1());
     else
@@ -149,4 +149,26 @@ void mAgaMonitor::on_btnListDevices_clicked()
 }
 
 
+
+
+void mAgaMonitor::on_btnGetParam_clicked()
+{
+
+    ui->textEdit->insertHtml(QString("<font color='blue'>%1 %2</font><br>").arg("param get").arg(ui->leParamName->text()).toLatin1());
+    if(!ui->leArg->text().isEmpty())
+        serialPort.write(QString("%1 %2\r").arg("param get").arg(ui->leParamName->text()).toLatin1());
+    else
+        serialPort.write(ui->leFunc->text().toLatin1()+'\r');
+}
+
+
+void mAgaMonitor::on_btnSetParam_clicked()
+{
+
+    ui->textEdit->insertHtml(QString("<font color='blue'>%1 %2 %3</font><br>").arg("param set").arg(ui->leParamName->text()).arg(ui->leParamValue->text()).toLatin1());
+    if(!ui->leArg->text().isEmpty())
+        serialPort.write(QString("%1 %2 %3\r").arg("param set").arg(ui->leParamName->text()).arg(ui->leParamName->text()).arg(ui->leParamValue->text()).toLatin1());
+    else
+        serialPort.write(ui->leFunc->text().toLatin1()+'\r');
+}
 
