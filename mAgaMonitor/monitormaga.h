@@ -35,6 +35,8 @@ typedef enum CLI_CMNDS
     GET_PARAMETER //!< set parameter
 }en_cli_cmd_t;
 
+
+
 static const char *CLI_BLE_STARTUP[] = {
     "start",
     "stop",
@@ -59,9 +61,34 @@ static const char *CLI_BLE_STARTUP[] = {
     "get_devname",
     "parameter set",
     "parameter get",
+
 };
-static const char *CLI_BLEINITTESTS[] = {
-    "apple", "orange", "grape", "banana",
+
+static const char *CLI_BLE_BLEINITTESTS[] = {
+    "unknown",
+    "unknown",
+    "unknown",
+    "unknown",
+    "unknown",
+    "unknown",
+    "unknown",
+    "unknown",
+    "unknown",
+    "unknown",
+    "bleStart",
+    "unknown",
+    "bleAdvertiseStartExample",
+    "bleAdvertiseStop",
+    "bleScanStart",
+    "bleScanStop",
+    "bleListDevices",
+    "unknown",
+    "unknown",
+    "bleGetMac",
+    "unknown",
+    "unknown",
+    "unknown",
+
 };
 
 class mAgaMonitor : public QDialog
@@ -72,6 +99,14 @@ public:
     mAgaMonitor(QWidget *parent = nullptr);
     ~mAgaMonitor();
     QSerialPort serialPort;
+
+    enum CMDS_BRANCH
+    {
+        BLESTARTUP,
+        BLEINITTESTS
+    } enBranch;
+
+    bool b_EscCodes;
 
 public slots:
     void readData();
@@ -106,6 +141,16 @@ private slots:
     void on_btnGetParam_clicked();
 
     void on_btnSetParam_clicked();
+
+    void on_comboBox_currentIndexChanged(int index);
+
+    void on_btnTestCommand_clicked();
+
+    void on_rbBranchBleInitTests_toggled(bool checked);
+
+    void on_rbBleStartup_toggled(bool checked);
+
+    void on_chbEscCodes_toggled(bool checked);
 
 private:
     Ui::mAgaMonitor *ui;

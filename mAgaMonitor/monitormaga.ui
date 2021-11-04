@@ -6,98 +6,47 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1011</width>
-    <height>555</height>
+    <width>1403</width>
+    <height>668</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MonitorMaga</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0">
-    <widget class="QGroupBox" name="groupBox_2">
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>290</width>
-       <height>60</height>
-      </size>
-     </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>5</number>
+   </property>
+   <item row="1" column="0">
+    <widget class="QGroupBox" name="groupBox_5">
      <property name="title">
-      <string>Communication</string>
+      <string>Branch (commands names)</string>
      </property>
-     <widget class="QWidget" name="">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>20</y>
-        <width>270</width>
-        <height>30</height>
-       </rect>
-      </property>
-      <layout class="QHBoxLayout" name="horizontalLayout">
-       <item>
-        <widget class="QComboBox" name="cbxSerialPort"/>
-       </item>
-       <item>
-        <widget class="QComboBox" name="cbxSerialSpeed">
-         <property name="minimumSize">
-          <size>
-           <width>69</width>
-           <height>0</height>
-          </size>
-         </property>
-         <item>
-          <property name="text">
-           <string>115200</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>19200</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>9600</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="btnOpen">
-         <property name="text">
-          <string>Open</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="btnRescanSerialPorts">
-         <property name="maximumSize">
-          <size>
-           <width>58</width>
-           <height>23</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>Scan</string>
-         </property>
-         <property name="icon">
-          <iconset>
-           <normaloff>../../../../../../../Windows/WinSxS/amd64_microsoft-windows-dxp-deviceexperience_31bf3856ad364e35_10.0.19041.746_none_251e769058968366/sync.ico</normaloff>../../../../../../../Windows/WinSxS/amd64_microsoft-windows-dxp-deviceexperience_31bf3856ad364e35_10.0.19041.746_none_251e769058968366/sync.ico</iconset>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QRadioButton" name="rbBranchBleInitTests">
+        <property name="text">
+         <string>BranchBleInitTests</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="rbBleStartup">
+        <property name="text">
+         <string>ble-startup</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </widget>
    </item>
-   <item row="0" column="1" rowspan="3">
+   <item row="0" column="1" rowspan="5">
     <widget class="QGroupBox" name="groupBox_3">
      <property name="minimumSize">
       <size>
@@ -109,9 +58,6 @@
       <string>Data</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_3">
-      <item row="0" column="0">
-       <widget class="QTextEdit" name="textEdit"/>
-      </item>
       <item row="1" column="0">
        <widget class="QPushButton" name="btnClearLogWindow">
         <property name="maximumSize">
@@ -125,58 +71,25 @@
         </property>
        </widget>
       </item>
+      <item row="0" column="0">
+       <widget class="QTextEdit" name="textEdit"/>
+      </item>
      </layout>
     </widget>
    </item>
-   <item row="1" column="0">
+   <item row="2" column="0">
     <widget class="QGroupBox" name="groupBox">
      <property name="maximumSize">
       <size>
        <width>290</width>
-       <height>282</height>
+       <height>530</height>
       </size>
      </property>
      <property name="title">
       <string>Commands</string>
      </property>
-     <layout class="QFormLayout" name="formLayout">
-      <item row="0" column="0" colspan="2">
-       <layout class="QHBoxLayout" name="horizontalLayout_5">
-        <item>
-         <widget class="QPushButton" name="btnStartBLE">
-          <property name="text">
-           <string>Start BLE</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="btnGetMac">
-          <property name="text">
-           <string>Get MAC</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item row="1" column="0" colspan="2">
-       <layout class="QHBoxLayout" name="horizontalLayout_6">
-        <item>
-         <widget class="QPushButton" name="btnStartAdvertise">
-          <property name="text">
-           <string>Start Advertise</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="btnStopAdvertise">
-          <property name="text">
-           <string>Stop Advertise</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item row="2" column="0">
+     <layout class="QGridLayout" name="gridLayout_4">
+      <item row="2" column="0" colspan="2">
        <layout class="QVBoxLayout" name="verticalLayout_3">
         <property name="spacing">
          <number>0</number>
@@ -204,7 +117,7 @@
         </item>
        </layout>
       </item>
-      <item row="2" column="1">
+      <item row="2" column="2">
        <layout class="QGridLayout" name="gridLayout_2">
         <item row="4" column="1">
          <widget class="QPushButton" name="btnSend">
@@ -258,10 +171,267 @@
         </item>
        </layout>
       </item>
+      <item row="4" column="2">
+       <widget class="QPushButton" name="btnTestCommand">
+        <property name="text">
+         <string>Test</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" colspan="3">
+       <layout class="QHBoxLayout" name="horizontalLayout_6">
+        <item>
+         <widget class="QPushButton" name="btnStartAdvertise">
+          <property name="text">
+           <string>Start Advertise</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnStopAdvertise">
+          <property name="text">
+           <string>Stop Advertise</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="0" column="0" colspan="3">
+       <layout class="QHBoxLayout" name="horizontalLayout_5">
+        <item>
+         <widget class="QPushButton" name="btnStartBLE">
+          <property name="text">
+           <string>Start BLE</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnGetMac">
+          <property name="text">
+           <string>Get MAC</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="3" column="2">
+       <widget class="QComboBox" name="comboBox">
+        <item>
+         <property name="text">
+          <string>START</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>STOP</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>SET</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>GET</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>BLE</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>BIST</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>DUT</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>ADVERTISE</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>SCAN</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>CUSTOM</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>START_BLE</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>STOP_BLE</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>START_ADVERTISE</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>STOP_ADVERTISE</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>START_SCAN</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>STOP_SCAN</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>LIST_DEVICES</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>START_CUSTOM</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>STOP_CUSTOM</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>GET_MAC</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>GET_DEVICE_NAME</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>SET_PARAMETER</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>GET_PARAMETER</string>
+         </property>
+        </item>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>
-   <item row="2" column="0">
+   <item row="0" column="0">
+    <widget class="QGroupBox" name="groupBox_2">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>60</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>302</width>
+       <height>60</height>
+      </size>
+     </property>
+     <property name="title">
+      <string>Communication</string>
+     </property>
+     <widget class="QWidget" name="layoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>270</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QComboBox" name="cbxSerialPort"/>
+       </item>
+       <item>
+        <widget class="QComboBox" name="cbxSerialSpeed">
+         <property name="minimumSize">
+          <size>
+           <width>69</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>50</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <item>
+          <property name="text">
+           <string>115200</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>19200</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>9600</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnOpen">
+         <property name="maximumSize">
+          <size>
+           <width>42</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Open</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btnRescanSerialPorts">
+         <property name="maximumSize">
+          <size>
+           <width>58</width>
+           <height>23</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Scan</string>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>../../../../../../../Windows/WinSxS/amd64_microsoft-windows-dxp-deviceexperience_31bf3856ad364e35_10.0.19041.746_none_251e769058968366/sync.ico</normaloff>../../../../../../../Windows/WinSxS/amd64_microsoft-windows-dxp-deviceexperience_31bf3856ad364e35_10.0.19041.746_none_251e769058968366/sync.ico</iconset>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+   <item row="4" column="0">
     <widget class="QGroupBox" name="groupBox_4">
      <property name="minimumSize">
       <size>
@@ -272,7 +442,7 @@
      <property name="maximumSize">
       <size>
        <width>290</width>
-       <height>16777215</height>
+       <height>219</height>
       </size>
      </property>
      <property name="title">
@@ -328,7 +498,28 @@
      </layout>
     </widget>
    </item>
+   <item row="3" column="0">
+    <widget class="QCheckBox" name="chbEscCodes">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="text">
+      <string>Ignore ESC codes</string>
+     </property>
+    </widget>
+   </item>
   </layout>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>2</width>
+     <height>2</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_2"/>
+  </widget>
  </widget>
  <resources/>
  <connections/>
