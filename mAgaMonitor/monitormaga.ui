@@ -14,6 +14,12 @@
    <string>MonitorMaga</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>5</number>
+   </property>
    <item row="0" column="0">
     <widget class="QGroupBox" name="groupBox_2">
      <property name="minimumSize">
@@ -52,6 +58,12 @@
            <height>0</height>
           </size>
          </property>
+         <property name="maximumSize">
+          <size>
+           <width>50</width>
+           <height>16777215</height>
+          </size>
+         </property>
          <item>
           <property name="text">
            <string>115200</string>
@@ -71,6 +83,12 @@
        </item>
        <item>
         <widget class="QPushButton" name="btnOpen">
+         <property name="maximumSize">
+          <size>
+           <width>42</width>
+           <height>16777215</height>
+          </size>
+         </property>
          <property name="text">
           <string>Open</string>
          </property>
@@ -97,43 +115,12 @@
      </widget>
     </widget>
    </item>
-   <item row="0" column="1" rowspan="3">
-    <widget class="QGroupBox" name="groupBox_3">
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>500</height>
-      </size>
-     </property>
-     <property name="title">
-      <string>Data</string>
-     </property>
-     <layout class="QGridLayout" name="gridLayout_3">
-      <item row="0" column="0">
-       <widget class="QTextEdit" name="textEdit"/>
-      </item>
-      <item row="1" column="0">
-       <widget class="QPushButton" name="btnClearLogWindow">
-        <property name="maximumSize">
-         <size>
-          <width>100</width>
-          <height>16777215</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>Clear</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="1" column="0">
+   <item row="2" column="0">
     <widget class="QGroupBox" name="groupBox">
      <property name="maximumSize">
       <size>
        <width>290</width>
-       <height>282</height>
+       <height>530</height>
       </size>
      </property>
      <property name="title">
@@ -359,6 +346,11 @@
         </item>
         <item>
          <property name="text">
+          <string>STOP_CUSTOM</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
           <string>GET_MAC</string>
          </property>
         </item>
@@ -382,7 +374,38 @@
      </layout>
     </widget>
    </item>
-   <item row="2" column="0">
+   <item row="0" column="1" rowspan="5">
+    <widget class="QGroupBox" name="groupBox_3">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>500</height>
+      </size>
+     </property>
+     <property name="title">
+      <string>Data</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_3">
+      <item row="0" column="0">
+       <widget class="QTextEdit" name="textEdit"/>
+      </item>
+      <item row="1" column="0">
+       <widget class="QPushButton" name="btnClearLogWindow">
+        <property name="maximumSize">
+         <size>
+          <width>100</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Clear</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="4" column="0">
     <widget class="QGroupBox" name="groupBox_4">
      <property name="minimumSize">
       <size>
@@ -393,7 +416,7 @@
      <property name="maximumSize">
       <size>
        <width>290</width>
-       <height>16777215</height>
+       <height>219</height>
       </size>
      </property>
      <property name="title">
@@ -443,6 +466,32 @@
         </property>
         <property name="text">
          <string>Set</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QGroupBox" name="groupBox_5">
+     <property name="title">
+      <string>Branch (commands names)</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QRadioButton" name="rbBranchBleInitTests">
+        <property name="text">
+         <string>BranchBleInitTests</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="rbBleStartup">
+        <property name="text">
+         <string>ble-startup</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
         </property>
        </widget>
       </item>

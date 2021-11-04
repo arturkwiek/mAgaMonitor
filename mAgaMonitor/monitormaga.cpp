@@ -6,6 +6,7 @@
 mAgaMonitor::mAgaMonitor(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::mAgaMonitor)
+    , enBranch(BLESTARTUP)
 {
     ui->setupUi(this);
     foreach (const QSerialPortInfo &serialInfo, QSerialPortInfo::availablePorts())
@@ -71,10 +72,14 @@ void mAgaMonitor::readData()
     while(serialPort.canReadLine())
     {
         QByteArray data = serialPort.readLine();
-        data.replace(27,"<br>");
-//        data.replace("\r\n","");
-//        data.replace("[0m","");
-        data.replace(QString("[0m").arg(27).toStdString(),"<br>");
+        data.replace("\033[m","</font>");
+        data.replace("\033[0m","</font>");
+        data.replace("\033[1;32m","<font style=\"font-weight:bold;\"color=green\">");
+        data.replace("\033[8D","");
+        data.replace("\033[J","");
+        qDebug()<< data;
+        if(data.toStdString().find("\033[31"))
+            qDebug()<< "found";
         ui->textEdit->insertHtml(QString("<br><font color='red'>%1</font>").arg(data));
 
         QScrollBar *sb = ui->textEdit->verticalScrollBar();
@@ -85,7 +90,7 @@ void mAgaMonitor::readData()
 
 void mAgaMonitor::on_btnRescanSerialPorts_clicked()
 {
-    if(ui->cbxSerialPort->count()==0)
+    ui->cbxSerialPort->clear();
     foreach (const QSerialPortInfo &serialInfo, QSerialPortInfo::availablePorts())
     {
         ui->cbxSerialPort->addItem(serialInfo.portName());
@@ -164,7 +169,6 @@ void mAgaMonitor::on_btnGetParam_clicked()
 
 void mAgaMonitor::on_btnSetParam_clicked()
 {
-
     ui->textEdit->insertHtml(QString("<font color='blue'>%1 %2 %3</font><br>").arg("param set").arg(ui->leParamName->text()).arg(ui->leParamValue->text()).toLatin1());
     if(!ui->leArg->text().isEmpty())
         serialPort.write(QString("%1 %2 %3\r").arg("param set").arg(ui->leParamName->text()).arg(ui->leParamName->text()).arg(ui->leParamValue->text()).toLatin1());
@@ -175,5 +179,43 @@ void mAgaMonitor::on_btnSetParam_clicked()
 void mAgaMonitor::on_comboBox_currentIndexChanged(int index)
 {
     qDebug() << index << ui->comboBox->currentText() << CLI_BLE_STARTUP[ui->comboBox->currentIndex()];
+}
+
+
+void mAgaMonitor::on_btnTestCommand_clicked()
+{
+    if(CMDS_BRANCH::BLEINITTESTS == enBranch)
+    {
+        qDebug() << "testing BLEINITTESTS";
+
+        ui->textEdit->insertHtml(QString("<font color='blue'>%1</font><br>").arg(CLI_BLE_BLEINITTESTS[ui->comboBox->currentIndex()]).toLatin1());
+        serialPort.write(QString("%1\r").arg(CLI_BLE_BLEINITTESTS[ui->comboBox->currentIndex()]).toLatin1());
+    }
+    else
+    {
+        qDebug() << "testing BLESTARTUP";
+
+        ui->textEdit->insertHtml(QString("<font color='blue'>%1</font><br>").arg(CLI_BLE_STARTUP[ui->comboBox->currentIndex()]).toLatin1());
+        serialPort.write(QString("%1\r").arg(CLI_BLE_STARTUP[ui->comboBox->currentIndex()]).toLatin1());
+    }
+
+}
+
+void mAgaMonitor::on_rbBranchBleInitTests_toggled(bool checked)
+{
+    if(true == checked)
+    {
+        enBranch = CMDS_BRANCH::BLEINITTESTS;
+    }
+}
+
+
+void mAgaMonitor::on_rbBleStartup_toggled(bool checked)
+{
+
+    if(true == checked)
+    {
+        enBranch = CMDS_BRANCH::BLESTARTUP;
+    }
 }
 
