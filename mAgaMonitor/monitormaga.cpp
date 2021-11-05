@@ -60,9 +60,9 @@ void mAgaMonitor::on_btnOpen_clicked()
 
 void mAgaMonitor::on_btnSend_clicked()
 {
-    ui->textEdit->insertHtml(QString("<font color='blue'>%1 %2</font><br>").arg(ui->leFunc->text()).arg(ui->leArg->text()));
+    ui->textEdit->insertHtml(QString("<br>><font color='blue'>%1 %2</font>").arg(ui->leFunc->text()).arg(ui->leArg->text()));
     if(!ui->leArg->text().isEmpty())
-        serialPort.write(QString("<br>%1 %2\r").arg(ui->leFunc->text()).arg(ui->leArg->text()).toLatin1());
+        serialPort.write(QString("%1 %2\r").arg(ui->leFunc->text()).arg(ui->leArg->text()).toLatin1());
     else
         serialPort.write(ui->leFunc->text().toLatin1()+'\r');
 
